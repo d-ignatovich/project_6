@@ -1,9 +1,9 @@
+
 def amount_number(card):
     if 13 <= len(card) <= 16:
         return True
     else:
         return False
-        
 def category(card):
     if card[0]=='4':
         return "Visa"
@@ -17,21 +17,21 @@ def category(card):
         return 'национальной платежной системы "Мир"'
     else:
         return 'Тип карты определить нельзя'
-        
 def check(card):
     card_2 = card[::-1]
     card_check = 0
     for i in range(0, len(card_2)):
         b = int(card_2[i])
-        if (i%2) == 1:
-            a = b*2
-            if a>9:
-                a = a//10 + a % 10
+        if (i % 2) != 0:
+            b = b*2
+            if b>9:
+                b = b//10 + b % 10
         card_check += b
     if card_check%10 == 0:
         return True
     else:
         return False
+
 
 card = input()
 
@@ -40,4 +40,3 @@ if amount_number(card)==True and check(card)==True:
     print ('Тип карты:', category(card))
 else:
     print ('Карты не существует')
-    
